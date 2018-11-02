@@ -11,7 +11,7 @@
   <div id="control-panel">
       <div>
           <label>Radius</label>
-          <input id="radius" type="range" min="1000" max="20000" step="1000" value="1000" />
+          <input id="radius" type="range" min="1000" max="20000" step="1000" value="5000" />
           <span id="radius-value"></span>
       </div>
       <div>
@@ -25,13 +25,14 @@
           <span id="upperPercentile-value"></span>
       </div>
       <div>
+          <label for="ddlData">Month:</label>
           <select id="ddlData" onchange="changeData()">
-              <option value="1" selected="selected">DataSet 1</option>
-              <option value="2">DataSet 2</option>
-              <option value="3">DataSet 3</option>
-              <option value="4">DataSet 4</option>
-              <option value="5">DataSet 5</option>
-              <option value="6">DataSet 6</option>
+              <option value="1" selected="selected">November 2018</option>
+              <option value="2">October 2018</option>
+              <option value="3">September 2018</option>
+              <option value="4">August 2018</option>
+              <option value="5">July 2018</option>
+              <option value="6">June 2018</option>
           </select>
       </div>
   </div>
