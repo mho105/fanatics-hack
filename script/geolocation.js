@@ -15,23 +15,6 @@ function getGeoLocation(addresses) {
     };
 
     var geocoder = nodeGeocoder(options);
-
-    // for (let address of addresses) {
-
-    //     geocoder.geocode(address)
-    //     .then(function(res) {
-    //         parseString(res, function (err, result) {
-    //             let geolocation = result.gpx.wpt[0].$;
-    //             json.push({
-    //                 'lat': geolocation.lat,
-    //                 'lng': geolocation.lon
-    //             });
-    //         });
-    //     })
-    //     .catch(function(err) {
-    //     console.log(err);
-    //     });
-    // }
     let promises = [];
     for (let address of addresses) {
         promises.push(geocoder.geocode(address));
@@ -40,7 +23,7 @@ function getGeoLocation(addresses) {
     Promise.all(promises)
         .then(function (res) {
             for (let r of res) {
-                parseString(res, function (err, result) {
+                parseString(r, function (err, result) {
                     let geolocation = result.gpx.wpt[0].$;
                     json.push({
                         'lat': geolocation.lat,
@@ -48,7 +31,7 @@ function getGeoLocation(addresses) {
                     });
                 });
             }
-            console.log(json)
+            console.log(json);
         });
 };
 
@@ -62,12 +45,11 @@ function convertCsv() {
             lines.push(data[0]);
         })
         .on("end", function () {
-            console.log("done reading csv file");
             getGeoLocation(lines);
         });
 }
 
-convertCsv();
+let json = convertCsv();
 //module.exports = getlaLon
 
 
