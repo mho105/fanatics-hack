@@ -1,28 +1,138 @@
 <html>
   <head>
-      <title>Live orders</title>
-      <script src="./script/geolocation.js"></script>
+    <title>Geo Orders</title>
     <script src="https://unpkg.com/deck.gl@^6.0.0/deckgl.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-  <div id="control-panel">
+    <div id="control-panel">
       <div>
-          <label>Radius</label>
-          <input id="radius" type="range" min="1000" max="20000" step="1000" value="5000" />
-          <span id="radius-value"></span>
+        <div>
+          <h2>Filter options</h2>
+        </div>
+        <div style="display: none;">
+        <label>Radius</label>
+        <input id="radius" type="range" min="1000" max="20000" step="1000" value="4000" />
+        <span id="radius-value"></span>
+      </div>
+      <div style="display: none;">
+        <label>Coverage</label>
+        <input id="coverage" type="range" min="0" max="1" step="0.1" value="1" />
+        <span id="coverage-value"></span>
+      </div>
+      <div style="display: none;">
+        <label>Upper Percentile</label>
+        <input id="upperPercentile" type="range" min="90" max="100" step="1" value="100" />
+        <span id="upperPercentile-value"></span>
       </div>
       <div>
-          <label>Coverage</label>
-          <input id="coverage" type="range" min="0" max="1" step="0.1" value="1" />
-          <span id="coverage-value"></span>
+        <label><b>Per Site</b></label>
+        <br>
+        <br>
+        <select name="sites">
+          <option value="All">All</option>
+          <option value="Aston Villa">Aston Villa</option>
+          <option value="Atletico">Atletico</option>
+          <option value="BVB">BVB</option>
+          <option value="Chelsea">Chelsea</option>
+          <option value="ERS">ERS</option>
+          <option value="European Tour">European Tour</option>
+          <option value="F1">F1</option>
+          <option value="Fanatics">Fanatics</option>
+          <option value="Kitbag">Kitbag</option>
+          <option value="Le Tour">Le Tour</option>
+          <option value="Man Utd">Man Utd</option>
+          <option value="MCFC">MCFC</option>
+          <option value="McLaren">McLaren</option>
+          <option value="MLB">MLB</option>
+          <option value="NBA">NBA</option>
+          <option value="NFL">NFL</option>
+          <option value="NHL">NHL</option>
+          <option value="PSG">PSG</option>
+          <option value="Real Madrid">Real Madrid</option>
+          <option value="Ryder Cup">Ryder Cup</option>
+          <option value="SoftBank Hawks">SoftBank Hawks</option>
+          <option value="Tigers">Tigers</option>
+          <option value="TheFA">TheFA</option>
+          <option value="Valencia">Valencia</option>
+          <option value="Williams">Williams</option>
+          <option value="Wimbledon">Wimbledon</option>
+          <option value="WRU">WRU</option>
+        </select>
+        <span id="site-value"></span>
       </div>
+      <br>
       <div>
-          <label>Upper Percentile</label>
-          <input id="upperPercentile" type="range" min="90" max="100" step="1" value="100" />
-          <span id="upperPercentile-value"></span>
+          <label><b>Country</b></label>
+          <br>
+          <br>
+          <select name="sites">
+            <option value="All">All</option>
+            <option value="">AbuDhabi</option>
+            <option value="">Belgium</option>
+            <option value="">Brazil</option>
+            <option value="">Canada</option>
+            <option value="">China</option>
+            <option value="">CostaRica</option>
+            <option value="">Croatia</option>
+            <option value="">Denmark</option>
+            <option value="">Dubai</option>
+            <option value="">France</option>
+            <option value="">Germany</option>
+            <option value="">Greece</option>
+            <option value="">HongKong</option>
+            <option value="">Italy</option>
+            <option value="">Japan</option>
+            <option value="">Laos</option>
+            <option value="">Luxembourg</option>
+            <option value="">Mexico</option>
+            <option value="">Monaco</option>
+            <option value="">NewZealand</option>
+            <option value="">Poland</option>
+            <option value="">Singapore</option>
+            <option value="">Sweden</option>
+            <option value="">UnitedKingdom</option>
+            <option value="">UnitedStatesofAmerica</option>
+          </select>
+          <span id="site-value"></span>
+        </div>
+      <br>
+      <div>
+        <label><b>Portal Code</b></label>
+        <br>
+        <br>
+        <input type="text" id="myInput">
+        <button onclick="document.getElementById('myInput').value = ''">Clear Field</button>
+      </div>
+      <br>
+      <div>
+        <label><b>Date Range</b></label>
+        <br>
+        <p>From</p>
+        <input type="text" id="date" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="date" value="11-02-2018">
+        <button onclick="document.getElementById('date').value = ''">Reset</button>
+        <br>
+        <p>To</p>
+        <input type="text" id="date1" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="date" value="11-01-2018">
+        <button onclick="document.getElementById('date1').value = ''">Reset</button>
+      </div>
+      <br>
+      <br>
+      <div>
+        <label><b>Time Range</b></label>
+          <br>
+          <p>From</p>
+          <input type="time" name="usr_time">
+          <br>
+          <p>To</p>
+          <input type="time" name="usr_time">
+      </div>
+      <br>
+      <br>
+      <div>
+          <button type="button">Apply</button>
       </div>
       <div>
           <label for="ddlData">Month:</label>
@@ -40,8 +150,7 @@
               </select>
           </div>
       </div>
-  </div>
-  
+    </div>
     <script src="script/map.js"></script>
   </body>
 </html>
