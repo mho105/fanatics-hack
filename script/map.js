@@ -25814,8 +25814,6 @@ var raw6 = [{ lat: 51.4047622680664, lng: -1.3244069814682 },
 data = raw.map(d => [Number(d.lng), Number(d.lat)]);
 renderLayer();
 
-var e = document.getElementById("ddlData");
-
 function changeData() {
     var e = document.getElementById("ddlData").value;
 
@@ -25838,15 +25836,18 @@ function changeData() {
         data = raw4.map(d => [Number(d.lng), Number(d.lat)]);
         renderLayer();
     }
+};
 
-    if (e === "5") {
+function changeDataStore() {
+    var store = document.getElementById("ddlStores").value;
+
+    if (store === "5") {
         data = raw5.map(d => [Number(d.lng), Number(d.lat)]);
         renderLayer();
     }
-    if (e === "6") {
+    if (store === "6") {
         data = raw6.map(d => [Number(d.lng), Number(d.lat)]);
         renderLayer();
     }
-
 };
 //});

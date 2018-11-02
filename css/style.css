@@ -22,6 +22,6 @@ label {
     width: 140px;
 }
 
-#ddlData {
+#ddlData, #ddlStores {
     margin-top: 20px;
 }
