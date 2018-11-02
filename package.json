@@ -1,0 +1,21 @@
+{
+  "name": "fanatics-hack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api/index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mho105/fanatics-hack.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mho105/fanatics-hack/issues"
+  },
+  "homepage": "https://github.com/mho105/fanatics-hack#readme"
+}
