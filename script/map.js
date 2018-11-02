@@ -53,8 +53,20 @@ function renderLayer () {
     layers: [hexagonLayer]
   });
 }
-d3.csv('https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv')
-  .then(response => {
-  data = response.map(d => [Number(d.lng), Number(d.lat)]);
+//d3.csv('http://10.0.75.1:8081/data.csv')
+  //.then(response => {
+  var raw = [
+    { lng: -0.198465, lat: 51.505538 },
+    { lng: -0.178838, lat: 51.491836 },
+    { lng: -0.205590, lat: 51.514910 },
+    { lng: -0.208327, lat: 51.514952 },
+    { lng: -0.206022, lat: 51.496572 },
+    { lng: -0.193610, lat: 51.500788 },
+    { lng: -0.173519, lat: 51.495171 },
+    { lng: -0.163542, lat: 51.492497 },
+    { lng: -0.211980, lat: 51.513659 },
+    { lng: -0.199786, lat: 51.515900 }
+  ];
+  data = raw.map(d => [Number(d.lng), Number(d.lat)]);
   renderLayer();
-});
+//});
